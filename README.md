@@ -22,3 +22,14 @@ Successful URL responses should have a 200 code. Ensure that you include error c
 ## License
 
 [License](LICENSE.txt)
+
+## Information on Submission
+
+### Git Repo Url
+https://github.com/aatmansp/Udacity-FBI_Image_Proccessing_Project
+
+### Image of ElastcBeanstalk Dashboard
+![eb_dashboard_image](image.png)
+
+### Working website url
+http://fbiimageprocessing-dev.us-east-1.elasticbeanstalk.com/
