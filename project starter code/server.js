@@ -55,6 +55,7 @@ import {filterImageFromURL, deleteLocalFiles, isValidImageUrl} from './util/util
     
     }
     catch(error){
+      console.error("error processing image ", error);
       res.status(500).json({message:"unable to process image"});
     }
   });
