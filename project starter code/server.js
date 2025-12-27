@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import {filterImageFromURL, deleteLocalFiles} from './util/util.js';
+import {filterImageFromURL, deleteLocalFiles, isValidImageUrl} from './util/util.js';
 
 
 
@@ -30,13 +30,40 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util.js';
     /**************************************************************************** */
 
   //! END @TODO1
+
+  app.get("/filteredimage", async (req, res) => {
+    const {image_url} = req.query;
+    if(!image_url){
+      return res.status(400).json({message:"image_url is required"});
+    }
+
+    if(!isValidImageUrl(image_url)){
+      return res.status(400).json({message:"image url is not valid"});
+    }
+    try{
+
+      const filteredPath = await filterImageFromURL(image_url);
+      if(!filteredPath){
+        return res.status(500).json({message:"unable to filter image from the url"});
+      }
+
+      res.on('finish', async () => {
+        await deleteLocalFiles([filteredPath]);
+      });
+
+      res.status(200).sendFile(filteredPath);
+    
+    }
+    catch(error){
+      res.status(500).json({message:"unable to process image"});
+    }
+  });
   
   // Root Endpoint
   // Displays a simple message to the user
   app.get( "/", async (req, res) => {
     res.send("try GET /filteredimage?image_url={{}}")
   } );
-  
 
   // Start the Server
   app.listen( port, () => {

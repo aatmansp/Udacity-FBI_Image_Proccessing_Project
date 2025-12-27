@@ -38,3 +38,17 @@ import Jimp from "jimp";
     fs.unlinkSync(file);
   }
 }
+  export function isValidImageUrl(image_url){
+    try{
+      const parsedUrl = new URL(image_url);
+      if(!['http:', 'https:'].includes(parsedUrl.protocol)){
+        console.log("invalid protocol");
+        return false;
+      }
+
+      return /\.(jpg|jpeg|png|gif|bmp|webp)$/i.test(parsedUrl.pathname)
+    }
+    catch{
+      return false;
+    }
+  }
