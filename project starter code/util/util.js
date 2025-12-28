@@ -24,7 +24,6 @@ import axios from "axios";
 
       const imageBuffer = Buffer.from(response.data, "binary");
       const photo = await Jimp.read(imageBuffer);
-      console.log(photo);
       const outpath =
         "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
       await photo
