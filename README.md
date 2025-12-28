@@ -29,7 +29,7 @@ Successful URL responses should have a 200 code. Ensure that you include error c
 https://github.com/aatmansp/Udacity-FBI_Image_Proccessing_Project
 
 ### Image of ElastcBeanstalk Dashboard
-![ebdashboard](image.png)
+![ebdashboard](./deployment_screeshot/image.png)
 
 ### Working website url
 http://fbi-image-proccessing-dev2.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg
